@@ -2,15 +2,16 @@ from django import forms
 
 
 class TeacherForm(forms.Form):
-    first_name = forms.CharField(label="Your name", max_length=50)
-    last_name = forms.CharField(label="Your surname", max_length=50)
-    fathers_name = forms.CharField(label="Your fathers name", max_length=50)
-    birth_date = forms.DateField(label="Your birth date")
+    first_name = forms.CharField(label="Teacher name")
+    last_name = forms.CharField(label="Teacher surname")
+    fathers_name = forms.CharField(label="Teacher fathers name")
+    birth_date = forms.DateField(label="Teacher birth date", initial="yyyy-mm-dd")
 
+    # check input
     # def clean_first_name(self):
     #     first_name = self.cleaned_data
     #     if len(first_name) > 50:
-    #         raise forms.ValidationError("Name is too long")
+    #         raise forms.ValidationError("Max length name equals 50 words")
     #     return None
     #
     # def clean_last_name(self):
@@ -34,16 +35,16 @@ class GroupForm(forms.Form):
     #         raise forms.ValidationError("Name is too long")
     #     return None
     #
-    # def clean_teacher_id(self):
-    #     teacher_id = self.cleaned_data
+    # def clean_teacher_id_id(self):
+    #     teacher_id_id = self.cleaned_data
     #     # need another validator to foreign key
-    #     if len(teacher_id) > 50:
+    #     if len(teacher_id_id) > 50:
     #         raise forms.ValidationError("ID have to be in DB")
 
 
 class SubjectForm(forms.Form):
     name = forms.CharField(label="Subject name", max_length=50)
-    description = forms.CharField(label="Subject description")
+    description = forms.CharField(label="Subject description", widget=forms.Textarea)
     score = forms.IntegerField(label="Number of score", max_value=10, min_value=1)
     teacher_id_id = forms.IntegerField(label="Teacher ID")
 
