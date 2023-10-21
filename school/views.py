@@ -43,7 +43,7 @@ def group_form(request):
     if form.is_valid():
         Group.objects.create(
             name=form.cleaned_data["name"],
-            teacher_id_id=form.cleaned_data["teacher_id_id"],
+            teacher=form.cleaned_data["teacher"],
         )
         return redirect("groups")
 
@@ -67,7 +67,7 @@ def subject_form(request):
             name=form.cleaned_data["name"],
             description=form.cleaned_data["description"],
             score=form.cleaned_data["score"],
-            teacher_id_id=form.cleaned_data["teacher_id_id"],
+            teacher=form.cleaned_data["teacher"],
         )
         return redirect("subjects")
 
